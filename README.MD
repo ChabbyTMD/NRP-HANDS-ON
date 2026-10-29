@@ -110,26 +110,42 @@ To deploy any job on the cluster, we will need to create a YAML file that descri
 
 #### Example Exercise: Hello World Pod.
 
-You will find a simple hello world example in the [examples/pod/](examples/pod/) directory. The `pod.yaml` file describes a simple pod that echoes a hello world command and sleeps for 1 hour.
+You will find a simple hello world example in the [examples/pod/](examples/pod/) directory. The `pod.yaml` file describes a simple pod that echoes a hello world command and sleeps for 10 minutes.
+
+> NOTE: Ensure you change the name attribute in the `metadata` section of the `pod.yaml` and `pod-write.yaml` file to include your. This is important to avoid naming conflicts with pods. For example;
+>```YAML
+>metadata:
+>  name: pod-write-tmugoya
+>```
 
 Start your pod with the following command:
 
 ```bash
-kubectl create -f examples/pod/pod.yaml
+kubectl create -f examples/pod/pod.yaml -n sdsu-sethuraman-lab
 ```
 
 Once successfully created, you can check the status of your pod with:
 
 ```bash
-kubectl get pods
+kubectl get pods -n sdsu-sethuraman-lab
 ```
 
 View the logs for your pod with:
 
 ```bash
 # View pod logs, replace with your username
-kubectl logs test-pod-<username>
+kubectl logs test-pod-<username> -n sdsu-sethuraman-lab
+
 ```
+
+To ssh into your pod, run the following command:
+
+```bash
+# SSH into your pod, replace with your username
+kubectl exec -it test-pod-<username> -n sdsu-sethuraman-lab -- bash
+```	
+
+
 
 
 
