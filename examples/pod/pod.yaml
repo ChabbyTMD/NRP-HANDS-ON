@@ -13,4 +13,4 @@ spec:
       requests:
         memory: 100Mi
         cpu: 100m
-    command: ["sh", "-c", "echo 'Hello from NRP!' && sleep 3600"]
+    command: ["sh", "-c", "echo 'Hello from NRP!' && sleep 600"]
