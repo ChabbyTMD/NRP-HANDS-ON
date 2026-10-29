@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-write-<username>
+spec:
+  containers:
+  - name: cephfs-container
+    image: ubuntu
+    resources:
+      limits:
+        memory: 100Mi
+        cpu: 100m
+      requests:
+        memory: 100Mi
+        cpu: 100m
+    command: ["bash", "-c", "echo \"Data written at $(date)\" > /shared-data/test_$RANDOM.txt && sleep 600"]
+    volumeMounts:
+    - name: cephfs-volume
+      mountPath: /shared-data
+  volumes:
+  - name: cephfs-volume
+    persistentVolumeClaim:
+      claimName: cephfs-pvc-sdsu-sethuraman-lab
