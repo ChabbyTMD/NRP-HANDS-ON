@@ -145,8 +145,63 @@ To ssh into your pod, run the following command:
 kubectl exec -it test-pod-<username> -n sdsu-sethuraman-lab -- bash
 ```	
 
+## Configure VS Code to use NRP Models for AI-assisted coding.
+
+1. Open VS Code's Command Palette (Ctrl+Shift+P or Cmd+Shift+P on macOS) and search for "Chat: Manage Language Models".
+2. Click on "Add Models" and select "Custom Endpoint".
+3. Specify NRP's custom endpoint URL: `https://ellm.nrp-nautilus.io/v1/chat/completions`.
+4. Paste in your API key.
+5. When prompted to add models, paste the following JSON.
+
+```JSON
+
+{
+  "name": "NRP",
+  "vendor": "customendpoint",
+  "apiKey": "${input:chat.lm.secret.2630e22e}",
+  "apiType": "chat-completions",
+  "models": [
+    {
+      "id": "glm-5",
+      "name": "glm-5",
+      "url": "https://ellm.nrp-nautilus.io/v1/chat/completions",
+      "toolCalling": true,
+      "vision": false,
+      "maxInputTokens": 1048576,
+      "maxOutputTokens": 100000
+    },
+    {
+      "id": "qwen3",
+      "name": "qwen3",
+      "url": "https://ellm.nrp-nautilus.io/v1/chat/completions",
+      "toolCalling": true,
+      "vision": true,
+      "maxInputTokens": 1000000,
+      "maxOutputTokens": 100000
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "deepseek-v4-flash",
+      "url": "https://ellm.nrp-nautilus.io/v1/chat/completions",
+      "toolCalling": true,
+      "vision": true,
+      "maxInputTokens": 1048576,
+      "maxOutputTokens": 100000
+    }
+  ]
+}
+```
+> This will add 3 models, GLM 5.3, Qwen3.8-Flash-Next-FP8 and DeepSeek v4 Flash to your VS Code Copilot chat.
 
 
+You can add additional models at any time by modifying the model JSON file by (Ctrl+Shift+P or Cmd+Shift+P on macOS) and search for "Chat: Manage Language Models" and "Open model JSON".
 
+![Open Model JSON](imgs/model_json.png)
+
+Next, you will need to select "Local" in the VS Code Copilot chat settings. 
+![Local Setting](imgs/select_local.png)
+
+To switch between models, click the star icon to switch models.
+![Switch Models](imgs/switch_model.png)
 
 
