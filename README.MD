@@ -1,9 +1,9 @@
-# Scientific Computing on the NRP Nautilus Cluster.
+# Hands on with the NRP Nautilus Cluster.
 
 > Adapted from NRP Winter Training 2026 material [here](https://github.com/nrp-nautilus/NRP-Winter2026-Training/blob/gh-pages/Beginner_Track_Training.md)
 
 
-In our previous lab meeting we introduced the NRP and it's various services (compute and LLM inference), in this lab meeting we shall perform a hands-on exercise on how to perform scientific computing on the NRP Nautilus cluster.
+In our previous lab meeting we introduced the NRP and it's various services (compute and LLM inference), in this lab meeting we shall perform a hands-on exercise on basic operations the NRP Nautilus cluster.
 
 For this session we shall be using a training namespace `sdsu-sethuraman-lab` which has been created. Join links have been posted on the lab slack.
 
